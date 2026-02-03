@@ -112,3 +112,6 @@ temp/
 
 # PM2 process manager
 .pm2/
+
+# Uploads (local storage)
+uploads/

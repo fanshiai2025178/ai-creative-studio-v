@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { createServer } from "http";
 import net from "net";
+import path from "path";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
@@ -33,6 +34,11 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "200mb" }));
   app.use(express.urlencoded({ limit: "200mb", extended: true }));
+  
+  // 静态文件服务 - 提供 /uploads/ 目录的访问
+  const uploadsDir = path.resolve(process.cwd(), "uploads");
+  app.use("/uploads", express.static(uploadsDir));
+  
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API

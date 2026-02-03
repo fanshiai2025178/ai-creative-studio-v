@@ -8,10 +8,6 @@ export const ENV = {
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
   geminiApiKey: process.env.GEMINI_API_KEY ?? "",
-  // 阿里云 OSS 配置
-  ossAccessKeyId: process.env.OSS_ACCESS_KEY_ID ?? "",
-  ossAccessKeySecret: process.env.OSS_ACCESS_KEY_SECRET ?? "",
-  ossBucket: process.env.OSS_BUCKET ?? "",
-  ossRegion: process.env.OSS_REGION ?? "oss-cn-hangzhou",
-  ossCustomDomain: process.env.OSS_CUSTOM_DOMAIN ?? "",
+  // 本地存储配置
+  baseUrl: process.env.BASE_URL ?? "http://localhost:3000",
 };
