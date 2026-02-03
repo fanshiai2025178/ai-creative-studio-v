@@ -1,0 +1,7 @@
+option batch on
+option confirm off
+open scp://root:sjbw8888@1989827Y@72.61.74.232/
+cd /tmp
+put f:\ai-creative-studio-deploy.zip
+close
+exit

@@ -1,0 +1,17 @@
+pm2 stop all 2>/dev/null || true
+pm2 delete all 2>/dev/null || true
+cd /var/www/ai-creative-studio
+rm -rf *
+unzip -o /tmp/ai-creative-studio-deploy.zip -d .
+cat > .env << 'ENVEOF'
+DATABASE_URL=mysql://ai_user:FanShai2026DB@Pass@72.61.74.232:3306/ai_creative_studio
+JWT_SECRET=your-super-secret-jwt-key-2026
+PORT=3000
+NODE_ENV=production
+ENVEOF
+pnpm install
+pnpm run build
+pnpm run db:push
+pm2 start dist/index.js --name ai-creative-studio
+pm2 save
+pm2 status

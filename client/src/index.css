@@ -1,0 +1,562 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Cyberpunk Neon Colors */
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-green: var(--neon-green);
+  --color-neon-orange: var(--neon-orange);
+}
+
+/* Cyberpunk Dark Theme - Default */
+:root {
+  /* Neon Colors */
+  --neon-pink: oklch(0.7 0.25 350);
+  --neon-cyan: oklch(0.8 0.2 195);
+  --neon-purple: oklch(0.65 0.25 300);
+  --neon-green: oklch(0.75 0.2 145);
+  --neon-orange: oklch(0.75 0.2 50);
+  --neon-yellow: oklch(0.85 0.2 90);
+  
+  --radius: 0.5rem;
+  --background: oklch(0.08 0.01 260);
+  --foreground: oklch(0.95 0.01 260);
+  --card: oklch(0.12 0.02 260);
+  --card-foreground: oklch(0.95 0.01 260);
+  --popover: oklch(0.1 0.02 260);
+  --popover-foreground: oklch(0.95 0.01 260);
+  --primary: oklch(0.7 0.25 350);
+  --primary-foreground: oklch(0.1 0.01 260);
+  --secondary: oklch(0.8 0.2 195);
+  --secondary-foreground: oklch(0.1 0.01 260);
+  --muted: oklch(0.2 0.02 260);
+  --muted-foreground: oklch(0.6 0.02 260);
+  --accent: oklch(0.65 0.25 300);
+  --accent-foreground: oklch(0.95 0.01 260);
+  --destructive: oklch(0.6 0.25 25);
+  --destructive-foreground: oklch(0.95 0.01 260);
+  --border: oklch(0.3 0.05 260);
+  --input: oklch(0.15 0.02 260);
+  --ring: oklch(0.7 0.25 350);
+  --chart-1: oklch(0.7 0.25 350);
+  --chart-2: oklch(0.8 0.2 195);
+  --chart-3: oklch(0.65 0.25 300);
+  --chart-4: oklch(0.75 0.2 145);
+  --chart-5: oklch(0.75 0.2 50);
+  --sidebar: oklch(0.1 0.02 260);
+  --sidebar-foreground: oklch(0.95 0.01 260);
+  --sidebar-primary: oklch(0.7 0.25 350);
+  --sidebar-primary-foreground: oklch(0.1 0.01 260);
+  --sidebar-accent: oklch(0.15 0.02 260);
+  --sidebar-accent-foreground: oklch(0.95 0.01 260);
+  --sidebar-border: oklch(0.3 0.05 260);
+  --sidebar-ring: oklch(0.7 0.25 350);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  
+  /* Custom scrollbar for cyberpunk theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.1 0.02 260);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.3 0.05 260);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.7 0.25 350);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1400px;
+    }
+  }
+}
+
+/* Cyberpunk utility classes */
+@layer utilities {
+  .neon-text-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 10px oklch(0.7 0.25 350 / 0.8), 0 0 20px oklch(0.7 0.25 350 / 0.5), 0 0 40px oklch(0.7 0.25 350 / 0.3);
+  }
+  
+  .neon-text-cyan {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 10px oklch(0.8 0.2 195 / 0.8), 0 0 20px oklch(0.8 0.2 195 / 0.5), 0 0 40px oklch(0.8 0.2 195 / 0.3);
+  }
+  
+  .neon-text-purple {
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px oklch(0.65 0.25 300 / 0.8), 0 0 20px oklch(0.65 0.25 300 / 0.5), 0 0 40px oklch(0.65 0.25 300 / 0.3);
+  }
+  
+  .neon-border-pink {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 10px oklch(0.7 0.25 350 / 0.5), 0 0 20px oklch(0.7 0.25 350 / 0.3), inset 0 0 10px oklch(0.7 0.25 350 / 0.1);
+  }
+  
+  .neon-border-cyan {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px oklch(0.8 0.2 195 / 0.5), 0 0 20px oklch(0.8 0.2 195 / 0.3), inset 0 0 10px oklch(0.8 0.2 195 / 0.1);
+  }
+  
+  .neon-border-purple {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 10px oklch(0.65 0.25 300 / 0.5), 0 0 20px oklch(0.65 0.25 300 / 0.3), inset 0 0 10px oklch(0.65 0.25 300 / 0.1);
+  }
+  
+  .cyber-grid {
+    background: 
+      /* Neon grid lines */
+      linear-gradient(oklch(0.5 0.2 280 / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.5 0.2 280 / 0.4) 1px, transparent 1px),
+      /* Purple gradient background */
+      linear-gradient(135deg, 
+        oklch(0.15 0.15 280) 0%, 
+        oklch(0.12 0.12 290) 25%,
+        oklch(0.1 0.1 300) 50%,
+        oklch(0.08 0.08 285) 75%,
+        oklch(0.06 0.06 270) 100%
+      );
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+  }
+  
+  .cyber-grid-perspective {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cyber-grid-perspective::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: 
+      linear-gradient(to top, oklch(0.5 0.25 300 / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.5 0.25 300 / 0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: bottom;
+    pointer-events: none;
+    mask-image: linear-gradient(to top, oklch(1 0 0 / 0.8) 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, oklch(1 0 0 / 0.8) 0%, transparent 100%);
+  }
+  
+  .cyber-grid-glow {
+    position: relative;
+  }
+  
+  .cyber-grid-glow::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 40%;
+    background: radial-gradient(ellipse at center, 
+      oklch(0.5 0.25 300 / 0.15) 0%, 
+      oklch(0.4 0.2 280 / 0.1) 30%,
+      transparent 70%
+    );
+    pointer-events: none;
+    filter: blur(40px);
+  }
+  
+  .cyber-scanline {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      oklch(0 0 0 / 0.1) 2px,
+      oklch(0 0 0 / 0.1) 4px
+    );
+    pointer-events: none;
+  }
+  
+  .hud-corner {
+    position: relative;
+  }
+  
+  .hud-corner::before,
+  .hud-corner::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: var(--neon-cyan);
+  }
+  
+  .hud-corner::before {
+    top: 0;
+    left: 0;
+    border-top: 2px solid;
+    border-left: 2px solid;
+  }
+  
+  .hud-corner::after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+  }
+  
+  .glass-panel {
+    background: oklch(0.12 0.08 280 / 0.75);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(0.4 0.15 290 / 0.4);
+    box-shadow: 
+      0 0 20px oklch(0.5 0.2 290 / 0.1),
+      inset 0 1px 0 oklch(1 0 0 / 0.05);
+  }
+  
+  .glass-panel-purple {
+    background: oklch(0.15 0.12 285 / 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid oklch(0.5 0.2 290 / 0.5);
+    box-shadow: 
+      0 0 30px oklch(0.5 0.25 290 / 0.15),
+      0 0 60px oklch(0.4 0.2 300 / 0.08),
+      inset 0 1px 0 oklch(1 0 0 / 0.08);
+  }
+  
+  .node-card-purple {
+    background: linear-gradient(135deg, 
+      oklch(0.18 0.15 280 / 0.85) 0%,
+      oklch(0.12 0.1 290 / 0.9) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid oklch(0.5 0.2 290 / 0.5);
+    box-shadow: 
+      0 0 25px oklch(0.5 0.25 290 / 0.2),
+      0 8px 32px oklch(0 0 0 / 0.3),
+      inset 0 1px 0 oklch(1 0 0 / 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .node-card-purple:hover {
+    border-color: oklch(0.6 0.25 290 / 0.7);
+    box-shadow: 
+      0 0 40px oklch(0.55 0.28 290 / 0.3),
+      0 12px 40px oklch(0 0 0 / 0.4),
+      inset 0 1px 0 oklch(1 0 0 / 0.15);
+  }
+  
+  .neon-glow-purple {
+    box-shadow: 
+      0 0 10px oklch(0.5 0.25 290 / 0.5),
+      0 0 20px oklch(0.5 0.25 290 / 0.3),
+      0 0 40px oklch(0.5 0.25 290 / 0.15);
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      filter: brightness(1);
+    }
+    50% {
+      opacity: 0.8;
+      filter: brightness(1.2);
+    }
+  }
+  
+  .animate-flicker {
+    animation: flicker 0.15s ease-in-out infinite alternate;
+  }
+  
+  @keyframes flicker {
+    0% { opacity: 0.97; }
+    100% { opacity: 1; }
+  }
+}
+
+/* React Flow customization for cyberpunk theme */
+.react-flow__node {
+  border-radius: 8px;
+  background: linear-gradient(135deg, 
+    oklch(0.18 0.15 280 / 0.9) 0%,
+    oklch(0.12 0.1 290 / 0.95) 100%
+  ) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid oklch(0.5 0.2 290 / 0.5) !important;
+  box-shadow: 
+    0 0 25px oklch(0.5 0.25 290 / 0.2),
+    0 8px 32px oklch(0 0 0 / 0.3),
+    inset 0 1px 0 oklch(1 0 0 / 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+.react-flow__node:hover {
+  border-color: oklch(0.6 0.25 290 / 0.7) !important;
+  box-shadow: 
+    0 0 40px oklch(0.55 0.28 290 / 0.35),
+    0 12px 40px oklch(0 0 0 / 0.4),
+    inset 0 1px 0 oklch(1 0 0 / 0.15) !important;
+}
+
+.react-flow__node.selected {
+  border-color: oklch(0.7 0.25 350) !important;
+  box-shadow: 
+    0 0 30px oklch(0.7 0.25 350 / 0.4),
+    0 0 60px oklch(0.7 0.25 350 / 0.2),
+    0 12px 40px oklch(0 0 0 / 0.4) !important;
+}
+
+.react-flow__edge-path {
+  stroke: var(--neon-cyan);
+  stroke-width: 2;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: var(--neon-pink);
+}
+
+.react-flow__handle {
+  background: var(--neon-cyan) !important;
+  border: 2px solid oklch(0.1 0.02 260) !important;
+  width: 16px !important;
+  height: 16px !important;
+  transition: all 0.2s ease;
+}
+
+.react-flow__handle:hover {
+  background: var(--neon-pink) !important;
+  width: 20px !important;
+  height: 20px !important;
+  box-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* 连线删除按钮 - 默认隐藏，悬停时显示 */
+.edge-delete-button {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.react-flow__edge:hover .edge-delete-button {
+  opacity: 1;
+}
+
+.react-flow__background {
+  background: 
+    /* Neon grid lines */
+    linear-gradient(oklch(0.45 0.2 280 / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.45 0.2 280 / 0.35) 1px, transparent 1px),
+    /* Purple gradient background */
+    linear-gradient(160deg, 
+      oklch(0.18 0.18 280) 0%, 
+      oklch(0.14 0.14 290) 20%,
+      oklch(0.1 0.12 300) 40%,
+      oklch(0.08 0.1 285) 60%,
+      oklch(0.06 0.08 270) 80%,
+      oklch(0.05 0.06 260) 100%
+    ) !important;
+  background-size: 40px 40px, 40px 40px, 100% 100% !important;
+  animation: grid-breathe 4s ease-in-out infinite;
+}
+
+@keyframes grid-breathe {
+  0%, 100% {
+    background-size: 40px 40px, 40px 40px, 100% 100%;
+    filter: brightness(1);
+  }
+  50% {
+    background-size: 42px 42px, 42px 42px, 100% 100%;
+    filter: brightness(1.1);
+  }
+}
+
+/* Grid line glow animation */
+.react-flow__background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(oklch(0.55 0.25 290 / 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.55 0.25 290 / 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-glow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes grid-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.react-flow__background pattern {
+  display: none !important;
+}
+
+/* Perspective grid overlay at bottom */
+.react-flow__viewport::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: 
+    linear-gradient(to top, oklch(0.6 0.25 300 / 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.6 0.25 300 / 0.25) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(400px) rotateX(55deg);
+  transform-origin: bottom;
+  pointer-events: none;
+  mask-image: linear-gradient(to top, oklch(1 0 0 / 0.7) 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, oklch(1 0 0 / 0.7) 0%, transparent 100%);
+  z-index: -1;
+}
+
+/* Ambient glow effect */
+.react-flow__pane::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 50%;
+  background: radial-gradient(ellipse at center, 
+    oklch(0.5 0.3 290 / 0.12) 0%, 
+    oklch(0.4 0.2 280 / 0.08) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: -1;
+}
+
+.react-flow__minimap {
+  background: oklch(0.1 0.02 260) !important;
+  border: 1px solid oklch(0.3 0.05 260) !important;
+}
+
+.react-flow__controls {
+  background: oklch(0.1 0.02 260) !important;
+  border: 1px solid oklch(0.3 0.05 260) !important;
+}
+
+.react-flow__controls-button {
+  background: oklch(0.15 0.02 260) !important;
+  border-color: oklch(0.3 0.05 260) !important;
+  color: oklch(0.8 0.2 195) !important;
+}
+
+.react-flow__controls-button:hover {
+  background: oklch(0.2 0.02 260) !important;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor !important;
+}
+
+/* 进度条渐变动画 */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 2s ease infinite;
+}
